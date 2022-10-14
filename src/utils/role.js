@@ -3,7 +3,7 @@ const ROLES = {
     name: 'user',
     description: 'user who can buy games'
   },
-  1:{
+  1: {
     name: 'vendor',
     description: 'user who can edit and sell games '
   }

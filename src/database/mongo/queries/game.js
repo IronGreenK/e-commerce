@@ -1,4 +1,4 @@
-const {GameModel} = require('../models')
+const { GameModel } = require('../models')
 
 /**
  * It saves a game to the database
@@ -12,11 +12,11 @@ const {GameModel} = require('../models')
  * @returns A promise that resolves to the saved game
  */
 const saveGame = async game => {
-    const savedGame = new GameModel(game)
+  const savedGame = new GameModel(game)
 
-    await savedGame.save()
+  await savedGame.save()
 
-    return savedGame
+  return savedGame
 }
 
 /**
@@ -24,18 +24,18 @@ const saveGame = async game => {
  * @returns found game
  */
 const getGameByID = async id => {
-    const games = await GameModel.find({id})
+  const games = await GameModel.find({ id })
 
-    return games[0]
+  return games[0]
 }
 
 /**
  * @returns found games
  */
 const getAllGames = async () => {
-    const games = await GameModel.find()
+  const games = await GameModel.find()
 
-    return games
+  return games
 }
 
 /**
@@ -43,9 +43,9 @@ const getAllGames = async () => {
  * @returns found game
  */
 const removeGameByID = async id => {
-    const game = await GameModel.findOneAndRemove({id})
+  const game = await GameModel.findOneAndRemove({ id })
 
-    return game
+  return game
 }
 
 /**
@@ -58,19 +58,19 @@ const removeGameByID = async id => {
  * @returns updated game
  */
 const updateOneGame = async game => {
-    const {id, name, rating, price, stock} = game
-    const gameUpdated = await GameModel.findOneAndUpdate(
-        {id},
-        {
-            ...(name && {name}),
-            ...(rating && {rating}),
-            ...(price && {price}),
-            ...(stock && {stock}),
-        },
-        {new: true}
-    )
+  const { id, name, rating, price, stock } = game
+  const gameUpdated = await GameModel.findOneAndUpdate(
+    { id },
+    {
+      ...(name && { name }),
+      ...(rating && { rating }),
+      ...(price && { price }),
+      ...(stock && { stock })
+    },
+    { new: true }
+  )
 
-    return gameUpdated
+  return gameUpdated
 }
 
 /**
@@ -79,16 +79,16 @@ const updateOneGame = async game => {
  * @returns The game user in the database
  */
 const getOneGame = async (query = {}) => {
-    const games = await GameModel.find(query)
+  const games = await GameModel.find(query)
 
-    return games[0]
+  return games[0]
 }
 
 module.exports = {
-    saveGame,
-    getGameByID,
-    getAllGames,
-    removeGameByID,
-    updateOneGame,
-    getOneGame
+  saveGame,
+  getGameByID,
+  getAllGames,
+  removeGameByID,
+  updateOneGame,
+  getOneGame
 }

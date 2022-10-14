@@ -1,4 +1,4 @@
-const {UserModel} = require('../models')
+const { UserModel } = require('../models')
 
 /**
  * It saves a user to the database
@@ -15,11 +15,11 @@ const {UserModel} = require('../models')
  * @returns A promise that resolves to the saved user
  */
 const saveUser = async user => {
-    const savedUser = new UserModel(user)
+  const savedUser = new UserModel(user)
 
-    await savedUser.save()
+  await savedUser.save()
 
-    return savedUser
+  return savedUser
 }
 
 /**
@@ -27,18 +27,18 @@ const saveUser = async user => {
  * @returns found user
  */
 const getUserByID = async id => {
-    const users = await UserModel.find({id})
+  const users = await UserModel.find({ id })
 
-    return users[0]
+  return users[0]
 }
 
 /**
  * @returns found users
  */
 const getAllUsers = async () => {
-    const users = await UserModel.find()
+  const users = await UserModel.find()
 
-    return users
+  return users
 }
 
 /**
@@ -46,9 +46,9 @@ const getAllUsers = async () => {
  * @returns found user
  */
 const removeUserByID = async id => {
-    const user = await UserModel.findOneAndRemove({id})
+  const user = await UserModel.findOneAndRemove({ id })
 
-    return user
+  return user
 }
 
 /**
@@ -64,25 +64,25 @@ const removeUserByID = async id => {
  * @returns updated user
  */
 const updateOneUser = async user => {
-    const {id, name, lastName, email, userName, balance, salt, hash} = user
-    const userUpdated = await UserModel.findOneAndUpdate(
-        {id},
-        {
-            ...(name && {name}),
-            ...(lastName && {lastName}),
-            ...(email && {email}),
-            ...(userName && {userName}),
-            ...(balance && {balance}),
-            ...(salt &&
-                hash && {
-                    salt,
-                    hash
-                })
-        },
-        {new: true}
-    )
+  const { id, name, lastName, email, userName, balance, salt, hash } = user
+  const userUpdated = await UserModel.findOneAndUpdate(
+    { id },
+    {
+      ...(name && { name }),
+      ...(lastName && { lastName }),
+      ...(email && { email }),
+      ...(userName && { userName }),
+      ...(balance && { balance }),
+      ...(salt &&
+        hash && {
+          salt,
+          hash
+        })
+    },
+    { new: true }
+  )
 
-    return userUpdated
+  return userUpdated
 }
 
 /**
@@ -91,16 +91,16 @@ const updateOneUser = async user => {
  * @returns The first user in the database
  */
 const getOneUser = async (query = {}) => {
-    const users = await UserModel.find(query)
+  const users = await UserModel.find(query)
 
-    return users[0]
+  return users[0]
 }
 
 module.exports = {
-    saveUser,
-    getUserByID,
-    getAllUsers,
-    removeUserByID,
-    updateOneUser,
-    getOneUser
+  saveUser,
+  getUserByID,
+  getAllUsers,
+  removeUserByID,
+  updateOneUser,
+  getOneUser
 }

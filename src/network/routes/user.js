@@ -130,7 +130,7 @@ UserRouter.route('/user/:id')
     auth.verifyIsCurrentUser(),
     async (req, res, next) => {
       const {
-        body: { name, lastName, email, password, userName, balance},
+        body: { name, lastName, email, password, userName, balance },
         params: { id: userId }
       } = req
 
