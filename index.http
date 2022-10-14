@@ -1,0 +1,106 @@
+//PASOS A SEGUIR TEST//
+
+### 1. Registrar (sign up) un usuario como cliente
+POST http://localhost:3000/api/user/signup
+Content-Type: application/json
+
+{
+  "name": "Kevin",
+  "lastName": "Araneda",
+  "email": "kevin.araneda@gmail.com",
+  "userName": "karaneda",
+  "password": "hkRdx@.3dsS:/s"
+}
+
+
+### 1.1. Login del cliente
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+  "email": "kevin.araneda@gmail.com",
+  "password": "hkRdx@.3dsS:/s"
+}
+
+### 2. Recargar saldo del cliente
+PATCH http://localhost:3000/api/user/zXjx4SJwsA3t3pd8wQ9RB
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldmluLmFyYW5lZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJoa1JkeEAuM2RzUzovcyIsImlhdCI6MTY2NTYxNjM3MiwiZXhwIjoxNjY1NjE2OTcyfQ.GefGhdnKGh3xXetPMpVyefyftw_rFkglivHQg9zq15o
+Content-Type: application/json
+
+{
+  "balance": 100000
+}
+
+
+### 3. Registrar un usuario como vendedor
+POST http://localhost:3000/api/user/signup
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "lastName": "Poderoso",
+  "email": "admin@gmail.com",
+  "userName": "GodAdmin",
+  "password": "kw.23R;lE3P",
+  "role": "1"
+}
+
+### 3.1. Login del vendedor
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "kw.23R;lE3P"
+}
+
+### 4. Registrar un artículo (precio) del vendedor
+POST http://localhost:3000/api/game/save
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoia3cuMjNSO2xFM1AiLCJpYXQiOjE2NjU2MTkyMDYsImV4cCI6MTY2NTYxOTgwNn0.G9-h0-TBXSKrvhq62mVy5JaRBi_C3zh0SJQDZOazPsg
+Content-Type: application/json
+
+{
+  "name": "Age of empire 2",
+  "price": 7000,
+  "rating": 4.9,
+  "stock": 5
+}
+
+
+### Create role
+POST http://localhost:3000/api/role
+Content-Type: application/json
+
+
+{
+  "id": "2",
+  "name": "user"
+}
+
+### Create genre
+POST http://localhost:3000/api/genre
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "action"
+}
+
+
+
+### Get a role
+GET http://localhost:3000/api/role/2
+Content-Type: application/json
+
+### Refresh user token
+GET http://localhost:3000/api/user/refreshAccessToken/x5kUjzl8T4TtQ1oE84vOB
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLnBhcnJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNDU2O2FiYzsiLCJpYXQiOjE2NjI1MTM2ODYsImV4cCI6MTY2MjUxNzI4Nn0.gpfhczqHiN94Sis8s1icT-lVJJn2b_1cGjOH72ei1R4
+
+
+### Get all user
+GET http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldmluLmFyYW5lZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJhc2Rhc2Rhc2RhZGFkYXF3ZXEiLCJpYXQiOjE2NjU1NDAxNTgsImV4cCI6MTY2NTU0MDc1OH0.6lvFZFsiTk5Xhz2KMF3QOxMxHLjrhrCFBcKxFG0nVAM
+
+### Get one user
+GET http://localhost:3000/api/user/x5kUjzl8T4TtQ1oE84vOB
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldmluLmFyYW5lZGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJhc2Rhc2Rhc2RhZGFkYXF3ZXEiLCJpYXQiOjE2NjU1NDAxNTgsImV4cCI6MTY2NTU0MDc1OH0.6lvFZFsiTk5Xhz2KMF3QOxMxHLjrhrCFBcKxFG0nVAM
