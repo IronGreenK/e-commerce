@@ -17,10 +17,10 @@ jobs:
           node-version: 16
 
       - name: Install Node.js dependencies
-        run: yarn ci
+        run: npm ci
 
-      - name: Revert changes in the yarn.lock file if they exists
-        run: git restore yarn.lock
+      - name: Revert changes in the package-lock.json file if they exists
+        run: git restore package-lock.json
 
       - name: Run unit tests
-        run: yarn run test:unit:ci
+        run: npm run test:unit:ci

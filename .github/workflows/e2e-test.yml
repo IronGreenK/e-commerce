@@ -18,13 +18,13 @@ jobs:
           node-version: 16
 
       - name: Install Node.js dependencies
-        run: yarn ci
+        run: npm ci
 
-      - name: Revert changes in the yarn.lock file if they exists
-        run: git restore yarn.lock
+      - name: Revert changes in the package-lock.json file if they exists
+        run: git restore package-lock.json
 
       - name: Run e2e tests
-        run: yarn run test:e2e:ci
+        run: npm run test:e2e:ci
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SECRET: ${{ secrets.SECRET }}
