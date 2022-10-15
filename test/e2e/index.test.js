@@ -44,7 +44,12 @@ describe('E2E test: Use cases from UserService', () => {
         accessToken: '',
         refreshToken: ''
     }
-
+    const game = {
+        name: "Age of empire 3",
+        price: 7000,
+        rating: 4.9,
+        stock: 5
+    }
 
     // User Mode Vendor
     const name2 = faker.name.firstName()
@@ -89,6 +94,31 @@ describe('E2E test: Use cases from UserService', () => {
         })
     })
 
+    describe('Testing update balance user', () => {
+        let response = {}
+        let getUser
+
+        test('Should return 200 as status code', async () => {
+
+            const {
+                data: {message: allUsers}
+            } = await axios.get(`${URL}/api/user`, {
+                headers: {
+                    Authorization: `Bearer ${tokens.accessToken}`
+                }
+            })
+            getUser = allUsers.find(user => user.email === newUser.email)
+            response = await axios.patch(`${URL}/api/user/${getUser.id}`, {balance: 10000},
+                {
+                    headers: {
+                        Authorization: `Bearer ${tokens.accessToken}`
+                    }
+                })
+            expect(response.status).toBe(200)
+        })
+
+    })
+
 
     describe('Testing save user as vendor', () => {
         let response = {}
@@ -116,13 +146,24 @@ describe('E2E test: Use cases from UserService', () => {
         })
     })
 
+    describe('Testing save game with the vendor', () => {
+        let response = {}
+
+        test('Should return 201 as status code', async () => {
+            response = await axios.post(`${URL}/api/game/save`, game, {
+                headers: {
+                    Authorization: `Bearer ${tokens2.accessToken}`
+                },
+            })
+            expect(response.status).toBe(201)
+        })
+    })
+
 })
 
 /**
  * E commerce
  * ------
- * 2. Recargar saldo del cliente
- * 4. Registrar un artículo (precio) del vendedor
  * 5. El cliente intenta comprar el artículo
  *  5.1. El saldo del cliente del insuficiente -> Recarga más saldo
  *  5.2. El saldo es suficiente -> Se genera la compra
