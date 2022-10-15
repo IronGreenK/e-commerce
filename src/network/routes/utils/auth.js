@@ -94,7 +94,7 @@ const verifyUserIsVendor = () => {
   return async (req, res, next) => {
     try {
       const {
-        params: { role: role },
+        params: { role },
         headers: { authorization }
       } = req
       const token = getToken(authorization)

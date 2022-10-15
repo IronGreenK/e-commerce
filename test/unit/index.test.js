@@ -22,10 +22,11 @@ const genres = [
     id: '1',
     name: 'simulation',
     description: 'game attempts to copy various activities from real life'
-  },{
-  _id: '5433',
+  },
+  {
+    _id: '5433',
     id: '2',
-    name:'action',
+    name: 'action',
     description: 'genre that emphasizes physical challenges'
   }
 ]
@@ -114,7 +115,7 @@ jest.mock('../../src/database/mongo/queries', () => {
           ...(name && { name }),
           ...(rating && { rating }),
           ...(price && { price }),
-          ...(stock && { stock }),
+          ...(stock && { stock })
         }
 
         games.splice(index, 1, gameUpdated)
@@ -146,9 +147,11 @@ jest.mock('../../src/database/mongo/queries', () => {
     },
     genre: {
       saveGenre: jest.fn(async genre => genres.push(genre)),
-      getGenreByID: jest.fn(async id => genres.filter(genre => genre.id === id)[0]),
+      getGenreByID: jest.fn(
+        async id => genres.filter(genre => genre.id === id)[0]
+      ),
       getGenreByName: jest.fn(
-          async name => genres.filter(genre => genre.name === name)[0]
+        async name => genres.filter(genre => genre.name === name)[0]
       )
     }
   }

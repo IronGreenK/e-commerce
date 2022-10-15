@@ -4,8 +4,8 @@ const storeUserSchema = Type.Object({
   name: Type.String({ minLength: 2 }),
   lastName: Type.String({ minLength: 2 }),
   email: Type.String({ format: 'email' }),
-  userName: Type.String({ minLength: 3}),
-  password: Type.String({ minLength: 8 }),
+  userName: Type.String({ minLength: 3 }),
+  password: Type.String({ minLength: 8 })
 })
 
 const updateUserSchema = Type.Partial(storeUserSchema)

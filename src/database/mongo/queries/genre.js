@@ -9,11 +9,11 @@ const { GenreModel } = require('../models')
  * @returns The savedGenre is being returned.
  */
 const saveGenre = async genre => {
-    const savedRole = new GenreModel(genre)
+  const savedRole = new GenreModel(genre)
 
-    await savedRole.save()
+  await savedRole.save()
 
-    return savedRole
+  return savedRole
 }
 
 /**
@@ -22,9 +22,9 @@ const saveGenre = async genre => {
  * @returns The first genre in the array of genres.
  */
 const getGenreByID = async id => {
-    const genres = await GenreModel.find({ id })
+  const genres = await GenreModel.find({ id })
 
-    return genres[0]
+  return genres[0]
 }
 
 /**
@@ -33,13 +33,13 @@ const getGenreByID = async id => {
  * @returns The first genre in the array of genres.
  */
 const getGenreByName = async name => {
-    const genres = await GenreModel.find({ name })
+  const genres = await GenreModel.find({ name })
 
-    return genres[0]
+  return genres[0]
 }
 
 module.exports = {
-    saveGenre,
-    getGenreByID,
-    getGenreByName
+  saveGenre,
+  getGenreByID,
+  getGenreByName
 }

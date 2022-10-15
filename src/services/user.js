@@ -29,7 +29,6 @@ class UserService {
   #role
   #balance
 
-
   /**
    * @param {Object} args
    * @param {String} args.userId
@@ -50,7 +49,7 @@ class UserService {
       userName = '',
       password = '',
       role = '2',
-      balance = 0,
+      balance = 0
     } = args
 
     this.#userId = userId
@@ -105,7 +104,7 @@ class UserService {
       balance: this.#balance,
       salt,
       hash,
-      role: role._id,
+      role: role._id
     })
 
     return await getAllUsers()
