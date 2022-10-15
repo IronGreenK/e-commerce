@@ -30,7 +30,7 @@ UserRouter.route('/user/signup').post(
   async (req, res, next) => {
     try {
       const {
-        body: { name, lastName, email, userName, password }
+        body: { name, lastName, email, userName, password, role }
       } = req
 
       response({
@@ -40,7 +40,8 @@ UserRouter.route('/user/signup').post(
           lastName,
           email,
           userName,
-          password
+          password,
+          role
         }).saveUser(),
         res,
         status: 201
