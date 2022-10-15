@@ -14,12 +14,12 @@
 Para instalar las dependencias de este proyecto, corre en tu terminal:
 
 ```bash
-yarn i
+npm i
 ```
 
 ## Uso
 
 Para correr el servidor en modo de desarrollo, utiliza:
 ```bash
-yarn express
+npm run express
 ```
